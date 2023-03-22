@@ -6,9 +6,18 @@ services:
     build:
       dockerfile: ./Dockerfile
       context: .
-    restart: always
-    ports:
-      - 3000:3000
     environment:
-      REDIS_HOST: host
-      REDIS_PASSWORD: pass
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    restart: unless-stopped
+    depends_on:
+      - redis
+    ports:
+      - "3000:3000"
+
+  redis:
+    container_name: redis
+    image: redis:alpine
+    restart: unless-stopped
+    ports:
+      - "6379:6379"

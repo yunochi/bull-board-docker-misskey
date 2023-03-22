@@ -4,23 +4,24 @@ Supports both: bull and bullmq. bull-board version v3.2.6
 
 ### Quick start with Docker
 ```
-docker run -p 3000:3000 deadly0/bull-board
+docker run -p 3000:3000 venatum/bull-board
 ```
 will run bull-board interface on `localhost:3000` and connect to your redis instance on `localhost:6379` without password.
 
-To configurate redis see "Environment variables" section.
+To configure redis see "Environment variables" section.
 
 ### Quick start with docker-compose
+
 ```yaml
-version: '3.5'
+version: "3"
 
 services:
-  bullboard:
-    container_name: bullboard
-    image: deadly0/bull-board
-    restart: always
-    ports:
-      - 3000:3000
+    bullboard:
+        container_name: bullboard
+        image: venatum/bull-board
+        restart: unless-stopped
+        ports:
+            - "3000:3000"
 ```
 will run bull-board interface on `localhost:3000` and connect to your redis instance on `localhost:6379` without password.
 
@@ -47,38 +48,39 @@ Only when both `USER_LOGIN` and `USER_PASSWORD` specified, access will be restri
 
 
 ### Example with docker-compose
+
 ```yaml
-version: '3.5'
+version: "3"
 
 services:
-  redis:
-    container_name: redis
-    image: redis:5.0-alpine
-    restart: always
-    ports:
-      - 6379:6379
-    volumes:
-      - redis_db_data:/data
+    redis:
+        container_name: redis
+        image: redis:5.0-alpine
+        restart: unless-stopped
+        ports:
+            - "6379:6379"
+        volumes:
+            - redis_db_data:/data
 
-  bullboard:
-    container_name: bullboard
-    image: deadly0/bull-board
-    restart: always
-    ports:
-      - 3000:3000
-    environment:
-      REDIS_HOST: redis
-      REDIS_PORT: 6379
-      REDIS_PASSWORD: example-password
-      REDIS_USE_TLS: 'false'
-      BULL_PREFIX: bull
-    depends_on:
-      - redis
+    bullboard:
+        container_name: bullboard
+        image: venatum/bull-board
+        restart: unless-stopped
+        environment:
+            REDIS_HOST: redis
+            REDIS_PORT: 6379
+            REDIS_PASSWORD: example-password
+            REDIS_USE_TLS: 'false'
+            BULL_PREFIX: bull
+        ports:
+                - "3000:3000"
+        depends_on:
+            - redis
 
 volumes:
-  redis_db_data:
-    external: false
+    redis_db_data:
+        external: false
 ```
 
-[bull-board]: https://github.com/vcapretz/bull-board
+[bull-board]: https://github.com/felixmosh/bull-board
 [bull-board]: https://github.com/felixmosh/bull-board#hosting-router-on-a-sub-path
