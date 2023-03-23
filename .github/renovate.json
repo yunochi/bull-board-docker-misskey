@@ -1,0 +1,12 @@
+{
+	"baseBranches": ["master"],
+	"autodiscover": true,
+	"labels": ["dependencies"],
+	"assignAutomerge": true,
+	"assignees": ["Venatum"],
+	"automerge": false,
+	"automergeStrategy": "merge-commit",
+	"automergeType": "pr",
+	"ignoreTests": true,
+	"rebaseWhen": "conflicted"
+}

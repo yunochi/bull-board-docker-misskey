@@ -3,6 +3,7 @@ version: "3.5"
 services:
   bullboard:
     container_name: bullboard
+#    image: venatum/bull-board:latest
     build:
       dockerfile: ./Dockerfile
       context: .

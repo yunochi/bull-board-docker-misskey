@@ -17,3 +17,6 @@ jobs:
         with:
           renovate-version: 35.0.0
           token: ${{ secrets.RENOVATE_TOKEN }}
+
+# https://medium.com/@superseb/maintenance-free-renovate-using-github-actions-workflows-d91d32ad854a
+# https://github.com/superseb-demos/renovate-config/blob/main/.github/workflows/renovate.yml
