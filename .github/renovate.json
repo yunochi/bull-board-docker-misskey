@@ -1,6 +1,9 @@
 {
 	"baseBranches": ["master"],
-	"autodiscover": true,
+	"autodiscover": false,
+	"repositories": [
+		"Venatum/bull-board-docker"
+	],
 	"labels": ["dependencies"],
 	"assignAutomerge": true,
 	"assignees": ["Venatum"],
