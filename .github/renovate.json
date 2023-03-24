@@ -2,7 +2,8 @@
 	"baseBranches": ["master"],
 	"autodiscover": false,
 	"repositories": [
-		"Venatum/bull-board-docker"
+		"Venatum/bull-board-docker",
+		"Venatum/docker-arena"
 	],
 	"labels": ["dependencies"],
 	"assignAutomerge": true,
