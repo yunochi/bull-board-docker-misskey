@@ -45,7 +45,7 @@ module.exports = {
 			releaseRules: [
 				{type: '*!', release: 'major'},
 				{type: 'chore', scope: 'api-deps', release: 'minor'},
-				{type: 'chore', scope: 'core-deps', release: 'patch'},
+				{type: 'chore', scope: 'deps', release: 'patch'},
 				{type: 'docs', release: 'patch'},
 				{type: 'revert', release: 'patch'},
 			]
