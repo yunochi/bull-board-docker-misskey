@@ -20,16 +20,26 @@
 	"semanticCommitScope": "deps",
 	"packageRules": [
 		{
-			"depTypeList": ["dependencies"],
-			"semanticCommitType": "build"
+			"packageNames": ["semantic-release"],
+			"matchPackagePatterns": ["^@semantic-release/"],
+			"semanticCommitType": "ci",
+			"automerge": true
 		},
 		{
-			"packageNames": ["semantic-release"],
-			"semanticCommitType": "build"
+			"matchDepTypes": ["dependencies"],
+			"semanticCommitType": "chore",
+			"semanticCommitScope": "deps"
+		},
+		{
+			"depTypeList": ["devDependencies"],
+			"semanticCommitType": "chore",
+			"semanticCommitScope": "dev-deps",
+			"automerge": true
 		},
 		{
 			"matchDatasources": ["docker"],
-			"semanticCommitType": "build"
+			"semanticCommitType": "build",
+			"semanticCommitScope": "docker"
 		}
 	]
 }
