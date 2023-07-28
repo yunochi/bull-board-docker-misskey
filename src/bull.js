@@ -17,8 +17,12 @@ async function setBullQueues() {
 	const uniqKeys = new Set(keys.map(key => key.replace(/^.+?:(.+?):.+?$/, '$1')));
 	const queueList = Array.from(uniqKeys).sort().map(
 		(item) => config.BULL_VERSION === 'BULLMQ' ?
-			new BullMQAdapter(new bullmq.Queue(item, {connection: redisConfig.redis})) :
-			new BullAdapter(new bull.Queue(item, redisConfig))
+			new BullMQAdapter(new bullmq.Queue(item, {
+				connection: client,
+			})) :
+			new BullAdapter(new bull.Queue(item, {
+                connection: client,
+            }))
 	);
 	setQueues(queueList);
 	console.log('🚀 done!')
