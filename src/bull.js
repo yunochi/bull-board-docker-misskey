@@ -18,10 +18,10 @@ async function setBullQueues() {
 	const queueList = Array.from(uniqKeys).sort().map(
 		(item) => config.BULL_VERSION === 'BULLMQ' ?
 			new BullMQAdapter(new bullmq.Queue(item, {
-				connection: redisConfig,
+				connection: redisConfig.redis,
 			}, client.connection)) :
 			new BullAdapter(new bull.Queue(item, {
-				connection: redisConfig,
+				connection: redisConfig.redis,
 			}, client.connection))
 	);
 	setQueues(queueList);
