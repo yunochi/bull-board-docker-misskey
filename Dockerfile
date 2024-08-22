@@ -5,7 +5,7 @@ USER node
 ENV NODE_ENV=production
 
 ARG PORT=3000
-ENV PORT $PORT
+ENV PORT=$PORT
 EXPOSE $PORT
 
 WORKDIR /home/node/
